@@ -46,6 +46,7 @@ dependencies {
     implementation(composeBom)
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.5.4")
 

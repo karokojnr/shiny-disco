@@ -5,6 +5,8 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.toMutableStateList
 import com.karokojnr.tchatter.R
 import com.karokojnr.tchatter.data.model.MessageUiModel
+import com.karokojnr.tchatter.viewmodel.MainViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.datetime.Instant
 import kotlinx.datetime.Clock
 
@@ -13,13 +15,15 @@ import java.util.UUID
 class ConversationUiState(
     val channelName: String,
     initialMessages: List<MessageUiModel>,
-) {
-    private val _messages: MutableList<MessageUiModel> = initialMessages.toMutableStateList()
+    val viewModel: MainViewModel
 
+) {
+    val authorId: MutableStateFlow<String> = viewModel.currentUserId
+    private val _messages: MutableList<MessageUiModel> = initialMessages.toMutableStateList()
     val messages: List<MessageUiModel> = _messages
 
     fun addMessage(msg: String, photoUri: Uri?) {
-        // TODO : implement in Chapter 6 😀
+        viewModel.onCreateNewMessageClick(msg, photoUri)
     }
 }
 

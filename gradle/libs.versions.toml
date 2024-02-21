@@ -4,7 +4,9 @@
 android-gradle-plugin = "8.2.2"
 androidx-activity-compose = "1.8.2"
 androidx-lifecycle-runtime-ktx = "2.7.0"
+lifecycle-runtime-compose = "2.6.2"
 kotlin = "1.9.10"
+
 
 # Dependency versions
 activity-compose = "1.8.0"
@@ -21,7 +23,7 @@ junit = "4.13.2"
 
 
 [libraries]
-
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle-runtime-compose" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 androidx-activity-compose-v182 = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
