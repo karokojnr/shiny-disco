@@ -5,6 +5,7 @@ android-gradle-plugin = "8.2.2"
 androidx-activity-compose = "1.8.2"
 androidx-lifecycle-runtime-ktx = "2.7.0"
 lifecycle-runtime-compose = "2.6.2"
+ditto = "4.5.0"
 kotlin = "1.9.10"
 
 
@@ -23,6 +24,7 @@ junit = "4.13.2"
 
 
 [libraries]
+ditto = { module = "live.ditto:ditto", version.ref = "ditto" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle-runtime-compose" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 androidx-activity-compose-v182 = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }

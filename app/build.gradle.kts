@@ -1,7 +1,15 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+val keysPropertiesFile: File = rootProject.file("keys.properties")
+val keysProperties = Properties()
+keysProperties.load(FileInputStream(keysPropertiesFile))
+
 
 android {
     namespace = "com.karokojnr.tchatter"
@@ -24,8 +32,12 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "DITTO_APP_ID", keysProperties["DITTO_APP_ID"] as String)
+            buildConfigField("String", "DITTO_TOKEN", keysProperties["DITTO_TOKEN"] as String)
         }
         debug {
+            buildConfigField("String", "DITTO_APP_ID", keysProperties["DITTO_APP_ID"] as String)
+            buildConfigField("String", "DITTO_TOKEN", keysProperties["DITTO_TOKEN"] as String)
             applicationIdSuffix = ".debug"
         }
     }
@@ -34,6 +46,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"
@@ -47,6 +60,7 @@ dependencies {
     implementation(libs.bundles.androidx)
     implementation(libs.bundles.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.ditto)
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.5.4")
 
